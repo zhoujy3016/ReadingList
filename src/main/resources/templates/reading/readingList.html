@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- <link rel="stylesheet" th:href="@{/style.css}"></link> -->
+<script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" />  
+</head>
+<script>
+	function htmlOnLoad() {
+		
+	}
+</script>
+<body onload="htmlOnLoad()">
+
+<h2>Your Reading List</h2>
+<form method="get">
+	<label for="author">Author:</label>
+	<input type="text" name="author" id="author" size="50">
+	<label for="title">Title:</label>
+	<input type="text" name="title" id="title" size="50" ></input><input type="submit" value="search"></input>
+</form>
+
+
+<div th:unless="${#lists.isEmpty(books)}">
+	<dl th:each="book: ${books}">
+		<dt>
+			<span th:text="${book.title}"></span>
+			<span th:text="${book.reader}"></span>
+			<span th:text="${book.isbn}"></span>
+			<span th:text="${book.author}"></span>
+			<span th:text="${book.description}"></span>
+			<span th:text="${book.publish_name}"></span>
+		</dt>
+	</dl>
+</div>
+<div>
+	共有<span th:text="${count}"></span>条数据
+</div>
+<hr/>
+<form method="post" th:object="${book}" th:action="@{/readingList/add}">
+	<label for="title">Title:</label>
+	<input type="text" th:field="*{title}" size="50"></input><span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span><br/>
+	<label for="author">Author:</label>
+	<input type="text" th:field="*{author}" size="50"></input><br/>
+	<label for="isbn">ISBN</label>
+	<input type="text" size="15" th:field="*{isbn}"></input><span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></span><br/>
+	<label for="discription">Description:</label>
+	<textarea th:field="*{description}"></textarea><br/>
+	<input type="submit"></input>
+</form>
+
+
+</body>
+</html>
