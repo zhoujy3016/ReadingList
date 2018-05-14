@@ -32,6 +32,8 @@ public class ReadingListController {
 		List<Book> readingList = readingListService.findBookInfomation(book.getAuthor(), book.getTitle());
 		
 		int count = readingListService.getCount();
+		// 测试sqlsession 查询
+		List<Book> listBook = readingListService.selectList(book);
 		
 		model.addAttribute("books", readingList);
 		model.addAttribute("count", count);

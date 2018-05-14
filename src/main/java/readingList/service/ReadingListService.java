@@ -12,6 +12,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
@@ -40,6 +41,8 @@ public class ReadingListService implements IReadingListService, BookMapper {
 	@Autowired
 	private BookMapper bookMapper;
 	
+	@Autowired
+	private SqlSession sqlSession;
 	
 	@Override
 	public List<Book> findAndSearch(Book book) {
@@ -89,6 +92,14 @@ public class ReadingListService implements IReadingListService, BookMapper {
 	@Override
 	public Book saveBook(Book book) {
 		return this.readingListRepository.save(book);
+	}
+
+
+	@Override
+	public List<Book> selectList(Book book) {
+		List<Book> listBook = sqlSession.selectList("readingList.mapper.BookMapper.findBookInfomation", book);
+		return listBook;
+		
 	}
 
 
