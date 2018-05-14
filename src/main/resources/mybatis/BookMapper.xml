@@ -12,10 +12,15 @@
         <result column="author" property="author" />
         <result column="publish_id" property="publish_id" />
         <result column="publish_name" property="publish_name"/>
+        <association property="publish" javaType="readingList.domain.Publish">
+         	<id column="publish_id" property="publish_id" />
+         	<result column="publish_name" property="publish_name"/>
+        </association>
+        
     </resultMap>
 
     <select id="findBookInfomation" resultMap="bookMap">
-        select b.*, p.publish_name from book b
+        select b.*, p.publish_id ,p.publish_name from book b
         left join publish p on b.publish_id = p.publish_id
         where 1=1
          <if test="author!= null and author!= ''">
