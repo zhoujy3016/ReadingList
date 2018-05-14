@@ -16,7 +16,6 @@
          	<id column="publish_id" property="publish_id" />
          	<result column="publish_name" property="publish_name"/>
         </association>
-        
     </resultMap>
 
     <select id="findBookInfomation" resultMap="bookMap">
