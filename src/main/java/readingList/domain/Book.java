@@ -86,6 +86,9 @@ public class Book {
 	public void setPublish_name(String publish_name) {
 		this.publish_name = publish_name;
 	}
+	public Publish getPublish() {
+		return publish;
+	}
 	
 	
 	

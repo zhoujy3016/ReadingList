@@ -103,5 +103,11 @@ public class ReadingListService implements IReadingListService, BookMapper {
 	}
 
 
+	@Override
+	public List<Book> findBookInfomationLazy(String author, String title) {
+		return this.bookMapper.findBookInfomationLazy(author, title);
+	}
+
+
 
 }

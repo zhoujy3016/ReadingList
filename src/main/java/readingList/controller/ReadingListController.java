@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 
 import readingList.domain.Book;
+import readingList.domain.Publish;
 import readingList.service.ReadingListService;
 
 
@@ -31,9 +32,18 @@ public class ReadingListController {
 	public String readerBooks(Book book, Model model) {
 		List<Book> readingList = readingListService.findBookInfomation(book.getAuthor(), book.getTitle());
 		
+		// 测试延迟加载
+		List<Book> listBook = readingListService.findBookInfomationLazy(book.getAuthor(), book.getTitle());
+		for(Book tempbook:listBook) {
+			if(tempbook.getPublish() != null) {
+				System.out.println("书名：" + tempbook.getTitle() + " 出版社名称：" + tempbook.getPublish().getPublish_name());	
+			}
+		}
+		
+		
 		int count = readingListService.getCount();
-		// 测试sqlsession 查询
-		List<Book> listBook = readingListService.selectList(book);
+//		// 测试sqlsession 查询
+//		List<Book> listBook = readingListService.selectList(book);
 		
 		model.addAttribute("books", readingList);
 		model.addAttribute("count", count);

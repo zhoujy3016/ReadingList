@@ -12,7 +12,18 @@
         <result column="author" property="author" />
         <result column="publish_id" property="publish_id" />
         <result column="publish_name" property="publish_name"/>
-        <association property="publish" javaType="readingList.domain.Publish">
+    </resultMap>
+    
+    
+    <resultMap type="readingList.domain.Book" id="bookMapAssociation">
+        <id column="id" property="id" />
+        <result column="reader" property="reader" />
+        <result column="isbn" property="isbn" />
+        <result column="title" property="title" />
+        <result column="description" property="description" />
+        <result column="author" property="author" />
+        <result column="publish_id" property="publish_id" />
+        <association property="publish" javaType="readingList.domain.Publish" select="findPublish" column="publish_id">
          	<id column="publish_id" property="publish_id" />
          	<result column="publish_name" property="publish_name"/>
         </association>
@@ -20,7 +31,7 @@
 
     <select id="findBookInfomation" resultMap="bookMap">
         select b.*, p.publish_id ,p.publish_name from book b
-        left join publish p on b.publish_id = p.publish_id
+        left join publish p on p.publish_id = b.publish_id
         <where>
 	         <if test="author!= null and author!= ''">
 				and b.author like '%${author}%'
@@ -30,5 +41,23 @@
 			</if>
 		</where>
     </select>
+    
+    
+    <select id="findBookInfomationLazy" resultMap="bookMapAssociation">
+        select b.* from book b
+        
+        <where>
+	         <if test="author!= null and author!= ''">
+				and b.author like '%${author}%'
+			</if>
+			<if test="title != null and title != ''">
+				and b.title like '%${title}%'
+			</if>
+		</where>
+    </select>
+
+	<select id="findPublish" parameterType="int" resultType="readingList.domain.Publish">
+		select * from publish where publish_id = #{id}
+	</select>
 
 </mapper>

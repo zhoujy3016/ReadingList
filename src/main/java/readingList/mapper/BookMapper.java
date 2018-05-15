@@ -18,4 +18,6 @@ public interface BookMapper {
 	
 	
 	List<Book> selectList(Book book);
+	
+	List<Book> findBookInfomationLazy(@Param("author")String author, @Param("title") String title);
 }
