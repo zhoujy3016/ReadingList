@@ -2,7 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="readingList.mapper.BookMapper">
-
+	<!-- 开启二级缓存 -->
+	<cache/>
     <resultMap type="readingList.domain.Book" id="bookMap">
         <id column="id" property="id" />
         <result column="reader" property="reader" />

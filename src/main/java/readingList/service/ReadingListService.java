@@ -12,6 +12,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.sql.DataSource;
 
+import org.apache.catalina.mapper.Mapper;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -78,7 +79,13 @@ public class ReadingListService implements IReadingListService, BookMapper {
 
 	@Override
 	public List<Book> findBookInfomation(String author, String title) {
-		return bookMapper.findBookInfomation(author, title);
+		BookMapper mapper = sqlSession.getMapper(BookMapper.class);
+		if(bookMapper == mapper) {
+			System.out.println("sqlSession取得mapper与自动注入mapper为同一对象");
+		} else {
+			System.out.println("sqlSession取得mapper与自动注入mapper为不同对象");
+		}
+		return mapper.findBookInfomation(author, title);
 	}
 
 
@@ -97,9 +104,9 @@ public class ReadingListService implements IReadingListService, BookMapper {
 
 	@Override
 	public List<Book> selectList(Book book) {
+		System.out.println("利用二级缓存mapper进行查询");
 		List<Book> listBook = sqlSession.selectList("readingList.mapper.BookMapper.findBookInfomation", book);
 		return listBook;
-		
 	}
 
 
