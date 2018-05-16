@@ -2,6 +2,8 @@ package readingList.controller;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,8 @@ import readingList.service.ReadingListService;
 @Controller
 @RequestMapping("/readingList")
 public class ReadingListController {
+	
+	private Log log = LogFactory.getLog(ReadingListController.class);
 	
 	@Autowired
 	private ReadingListService readingListService;
@@ -45,6 +49,7 @@ public class ReadingListController {
 		
 		model.addAttribute("books", readingList);
 		model.addAttribute("count", count);
+		log.info("测试一条log");
 		return "reading/readingList";
 	}
 	

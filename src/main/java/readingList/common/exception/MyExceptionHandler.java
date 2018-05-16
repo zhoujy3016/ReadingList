@@ -12,7 +12,7 @@ public class MyExceptionHandler {
 	
 	@ExceptionHandler(Exception.class)
 	public String handleException(Exception e, Model model) {
-		logger.error(e.getMessage(), e);
+		logger.error("异常信息：", e);
 		model.addAttribute("errorMsg", e.getMessage());
 		return "error.html";
 	}
