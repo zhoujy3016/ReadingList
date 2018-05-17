@@ -2,6 +2,8 @@ package readingList.controller;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +17,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 
 import readingList.domain.Book;
-import readingList.domain.Publish;
 import readingList.service.ReadingListService;
 
 
 @Controller
 @RequestMapping("/readingList")
 public class ReadingListController {
+	
+	private Log log = LogFactory.getLog(ReadingListController.class);
 	
 	@Autowired
 	private ReadingListService readingListService;
@@ -39,14 +42,14 @@ public class ReadingListController {
 				System.out.println("书名：" + tempbook.getTitle() + " 出版社名称：" + tempbook.getPublish().getPublish_name());	
 			}
 		}
-		
-		
+
 		int count = readingListService.getCount();
 //		// 测试sqlsession 查询
 		List<Book> sessionList = readingListService.selectList(book);
 		
 		model.addAttribute("books", readingList);
 		model.addAttribute("count", count);
+		log.info("测试一条log");
 		return "reading/readingList";
 	}
 	
