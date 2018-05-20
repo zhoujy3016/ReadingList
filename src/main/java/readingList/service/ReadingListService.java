@@ -15,6 +15,7 @@ import javax.sql.DataSource;
 import org.apache.catalina.mapper.Mapper;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
@@ -29,7 +30,7 @@ import readingList.mapper.BookMapper;
 
 
 @Service
-public class ReadingListService implements IReadingListService, BookMapper {
+public class ReadingListService implements IReadingListService {
 	@Autowired 
 	private ReadingListRepository readingListRepository;
 	
@@ -44,6 +45,8 @@ public class ReadingListService implements IReadingListService, BookMapper {
 	
 	@Autowired
 	private SqlSession sqlSession;
+	
+	
 	
 	@Override
 	public List<Book> findAndSearch(Book book) {
@@ -111,10 +114,9 @@ public class ReadingListService implements IReadingListService, BookMapper {
 
 
 	@Override
-	public List<Book> findBookInfomationLazy(String author, String title) {
-		return this.bookMapper.findBookInfomationLazy(author, title);
+	@Cacheable(cacheNames="book")
+	public List<Book> findBookInfomationLazy(Book book) {
+		return this.bookMapper.findBookInfomationLazy(book.getAuthor(), book.getTitle());
 	}
-
-
 
 }
