@@ -35,8 +35,7 @@ public class AppRunner implements ApplicationRunner{
 			String type = typeList.get(i).getType();
 			// 根据类型查询每种数据字典，添加到map中
 			sysDictService.getSysDictEntity(type);
+		}
 	}
-}
-	
 
 }

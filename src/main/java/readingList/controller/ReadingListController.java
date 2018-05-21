@@ -31,9 +31,6 @@ public class ReadingListController {
 	@Autowired
 	private ReadingListService readingListService;
 	
-	@Autowired
-	private ConcurrentMapCacheManager cacheManager;
-	
 	@GetMapping
 	public String readerBooks(Book book, Model model) {
 		List<Book> readingList = readingListService.findBookInfomation(book.getAuthor(), book.getTitle());
@@ -41,7 +38,6 @@ public class ReadingListController {
 		
 		// 测试延迟加载
 		List<Book> listBook = readingListService.findBookInfomationLazy(book);
-		this.printCacheData();
 		for(Book tempbook:listBook) {
 			if(tempbook.getPublish() != null) {
 				System.out.println("书名：" + tempbook.getTitle() + " 出版社名称：" + tempbook.getPublish().getPublish_name());	
@@ -77,13 +73,5 @@ public class ReadingListController {
 		return readingList;
 	}
 	
-	private void printCacheData() {
-		Object[] arr = cacheManager.getCacheNames().toArray();
-		for(int i=0; i < arr.length; i++) {
-			String cacheName = arr[i].toString();
-			Cache cache = cacheManager.getCache(cacheName);
-			System.out.print("1");
-		}
-	}
 
 }
