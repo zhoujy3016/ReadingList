@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.Cache.ValueWrapper;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import readingList.common.bean.DictCacheService;
 
 
 @RestController
@@ -18,11 +19,10 @@ public class SysDictController {
 	@Autowired
 	private ConcurrentMapCacheManager cacheManager;
 	
-	@RequestMapping(value="/getDictData/{types}")
-	public Map<String, Object> getDictData(@PathVariable("types") String types) throws Exception {
-		if(StringUtils.isEmpty(types)) {
-			throw new Exception("type为空");
-		}
+	@Autowired DictCacheService dictCacheService;
+	
+	@RequestMapping(value="/getDictCache/{types}")
+	public Map<String, Object> getDictCache(@PathVariable("types") String types) throws Exception {
 		Map<String, Object> map = new HashMap<>();
 		String[] arrType = types.split(",");
 		Cache cache = cacheManager.getCache("dictionary");
@@ -32,6 +32,17 @@ public class SysDictController {
 			map.put(type, vw.get());
 		}
 		
+		return map;
+	}
+	
+	@RequestMapping("/getDictMap/{types}")
+	public Map<String, Object>getDictMap(@PathVariable("types") String types) {
+		Map<String, Object> dictMap = dictCacheService.getCacheMap();
+		Map<String, Object> map = new HashMap<>();
+		String[] arrType = types.split(",");
+		for(String type: arrType) {
+			map.put(type, dictMap.get(type));
+		}
 		return map;
 	}
 }
