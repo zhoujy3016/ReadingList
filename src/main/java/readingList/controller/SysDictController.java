@@ -19,7 +19,8 @@ public class SysDictController {
 	@Autowired
 	private ConcurrentMapCacheManager cacheManager;
 	
-	@Autowired DictCacheService dictCacheService;
+	@Autowired 
+	private DictCacheService dictCacheService;
 	
 	@RequestMapping(value="/getDictCache/{types}")
 	public Map<String, Object> getDictCache(@PathVariable("types") String types) throws Exception {
