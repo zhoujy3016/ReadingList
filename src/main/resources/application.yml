@@ -1,0 +1,30 @@
+spring:
+  cache:
+    type: simple
+  datasource:
+    password: admin
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/DBbook?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+server:
+  port: 8081
+mybatis:
+  configuration:
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+  mapper-locations: classpath:/mybatis/*.xml
+logging:
+  path: logs/
+  file: myLog.log
+  level:
+    root: info
+    readingList: debug
