@@ -2,10 +2,10 @@ spring:
   cache:
     type: simple
   datasource:
-    password: admin
-    driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/DBbook?useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: root
+    password: admin
+    driverClassName: com.mysql.jdbc.Driver
   jpa:
     database: MYSQL
     show-sql: true

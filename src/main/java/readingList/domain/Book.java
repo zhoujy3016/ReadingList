@@ -31,7 +31,7 @@ public class Book implements Serializable{
 	private String author;
 	private String description;
 	
-	private String publish_id;
+	private Integer publish_id;
 	
 	@Transient
 	private String publish_name;
@@ -80,10 +80,10 @@ public class Book implements Serializable{
 	public void setPublish(Publish publish) {
 		this.publish = publish;
 	}
-	public String getPublish_id() {
+	public Integer getPublish_id() {
 		return publish_id;
 	}
-	public void setPublish_id(String publish_id) {
+	public void setPublish_id(Integer publish_id) {
 		this.publish_id = publish_id;
 	}
 	public String getPublish_name() {
