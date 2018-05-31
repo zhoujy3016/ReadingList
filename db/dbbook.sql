@@ -82,7 +82,7 @@ CREATE TABLE `sys_dict` (
   `del_flag` tinyint(4) DEFAULT '0' COMMENT '删除标记  -1：已删除  0：正常',
   PRIMARY KEY (`id`),
   UNIQUE KEY `type` (`type`,`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='数据字典表';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='数据字典表';
 
 /*Data for the table `sys_dict` */
 
@@ -96,8 +96,9 @@ insert  into `sys_dict`(`id`,`name`,`type`,`code`,`value`,`order_num`,`remark`,`
 (7,'地区','area','1','沈阳',0,NULL,0),
 (8,'地区','area','2','大连',1,NULL,0),
 (9,'地区','area','3','丹东',2,NULL,0),
-(11,'123','123','2','2',2,'2',-1),
-(12,'12','12','2','2',2,'2',-1);
+(13,'出版社','pub','1','电子工业出版社',1,NULL,0),
+(14,'出版社','pub','2','朝鲜劳动党出版社',2,NULL,0),
+(15,'出版社','pub','3','工人出版社',3,NULL,0);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
