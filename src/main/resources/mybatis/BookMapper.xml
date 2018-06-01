@@ -35,10 +35,13 @@
         left join publish p on p.publish_id = b.publish_id
         <where>
 	         <if test="author!= null and author!= ''">
-				and b.author like '%${author}%'
+	         	<!-- 使用bind防止sql注入 -->
+	         	<bind name="authorLike" value="'%'+ author +'%'"/>
+				and b.author like #{authorLike}
 			</if>
 			<if test="title != null and title != ''">
-				and b.title like '%${title}%'
+				<bind name="titleLike" value="'%'+ title +'%'"/>
+				and b.title like #{titleLike}
 			</if>
 		</where>
     </select>
@@ -49,10 +52,13 @@
         
         <where>
 	         <if test="author!= null and author!= ''">
-				and b.author like '%${author}%'
+	         <bind name="authorLike" value="'%'+ author +'%'"/>
+				and b.author like #{authorLike}
 			</if>
 			<if test="title != null and title != ''">
-				and b.title like '%${title}%'
+			<bind name="titleLike" value="'%'+ title +'%'"/>
+				and b.title like #{titleLike}
+				<!-- and b.title like '%${title}%' -->
 			</if>
 		</where>
     </select>
