@@ -15,18 +15,12 @@
         <result column="publish_name" property="publish_name"/>
     </resultMap>
     
-    
-    <resultMap type="readingList.domain.Book" id="bookMapAssociation">
-        <id column="id" property="id" />
-        <result column="reader" property="reader" />
-        <result column="isbn" property="isbn" />
-        <result column="title" property="title" />
-        <result column="description" property="description" />
-        <result column="author" property="author" />
-        <result column="publish_id" property="publish_id" />
+   
+    <resultMap type="readingList.domain.Book" id="bookMapAssociation" extends="bookMap">
+    <!-- fetchType 覆盖全局加载方式 -->
         <association property="publish" javaType="readingList.domain.Publish" select="findPublish" column="publish_id">
-         	<id column="publish_id" property="publish_id" />
-         	<result column="publish_name" property="publish_name"/>
+            <result column="publish_id" property="publish_id" />
+        	<result column="publish_name" property="publish_name"/>
         </association>
     </resultMap>
 
@@ -64,7 +58,7 @@
     </select>
 
 	<select id="findPublish" parameterType="int" resultType="readingList.domain.Publish">
-		select * from publish where publish_id = #{id}
+		select publish_id, publish_name from publish where publish_id = #{id}
 	</select>
 
 </mapper>
