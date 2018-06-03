@@ -18,7 +18,8 @@
    
     <resultMap type="readingList.domain.Book" id="bookMapAssociation" extends="bookMap">
     <!-- fetchType 覆盖全局加载方式 -->
-        <association property="publish" javaType="readingList.domain.Publish" select="findPublish" column="publish_id">
+        <association property="publish" javaType="readingList.domain.Publish" 
+        	select="readingList.mapper.PublishMapper.findPublishById" column="publish_id">
             <result column="publish_id" property="publish_id" />
         	<result column="publish_name" property="publish_name"/>
         </association>
@@ -56,9 +57,5 @@
 			</if>
 		</where>
     </select>
-
-	<select id="findPublish" parameterType="int" resultType="readingList.domain.Publish">
-		select publish_id, publish_name from publish where publish_id = #{id}
-	</select>
-
+    
 </mapper>

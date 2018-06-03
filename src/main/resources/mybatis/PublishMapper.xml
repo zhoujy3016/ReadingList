@@ -6,5 +6,7 @@
          <id column="publish_id" property="publish_id" />
          <result column="publish_name" property="publish_name"/>
 	</resultMap>
-
+	<select id="findPublishById" parameterType="int" resultType="readingList.domain.Publish">
+		select publish_id, publish_name from publish where publish_id = #{id}
+	</select>
 </mapper>
