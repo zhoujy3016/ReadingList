@@ -26,7 +26,27 @@
         </association>
     </resultMap>
 
-    <select id="findBookInfomation" resultMap="bookMap">
+
+<!-- 	<select id="findBookInfomation" resultType="readingList.domain.Book">
+	    select b.*, 
+	    p.publish_id "publish.publish_id" ,
+	    p.publish_name "publish.publish_name" 
+	    
+	    from book b
+        left join publish p on p.publish_id = b.publish_id
+        <where>
+	         <if test="author!= null and author!= ''">
+	         	<bind name="authorLike" value="'%'+ author +'%'"/>
+				and b.author like #{authorLike}
+			</if>
+			<if test="title != null and title != ''">
+				<bind name="titleLike" value="'%'+ title +'%'"/>
+				and b.title like #{titleLike}
+			</if>
+		</where>
+	</select> -->
+
+     <select id="findBookInfomation" resultMap="bookMap">
         select b.*, p.publish_id ,p.publish_name from book b
         left join publish p on p.publish_id = b.publish_id
         <where>
