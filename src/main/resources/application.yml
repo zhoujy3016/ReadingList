@@ -21,6 +21,7 @@ mybatis:
   configuration:
     lazy-loading-enabled: true
     aggressive-lazy-loading: false
+    cache-enabled: true
   mapper-locations: classpath:/mybatis/*.xml
 logging:
   path: logs/
@@ -28,3 +29,4 @@ logging:
   level:
     root: info
     readingList: debug
+ 
