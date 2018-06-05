@@ -23,6 +23,7 @@ mybatis:
     aggressive-lazy-loading: false
     cache-enabled: true
   mapper-locations: classpath:/mybatis/*.xml
+  type-aliases-package: readingList.domain
 logging:
   path: logs/
   file: myLog.log
