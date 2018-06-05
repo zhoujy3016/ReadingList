@@ -27,7 +27,8 @@
     </resultMap>
 
 
-<!-- 	<select id="findBookInfomation" resultType="readingList.domain.Book">
+<!-- resultType实现	
+	<select id="findBookInfomation" resultType="readingList.domain.Book">
 	    select b.*, 
 	    p.publish_id "publish.publish_id" ,
 	    p.publish_name "publish.publish_name" 
@@ -44,7 +45,8 @@
 				and b.title like #{titleLike}
 			</if>
 		</where>
-	</select> -->
+	</select>
+ -->
 
      <select id="findBookInfomation" resultMap="bookMap">
         select b.*, p.publish_id ,p.publish_name from book b
