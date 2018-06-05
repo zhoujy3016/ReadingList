@@ -107,7 +107,6 @@ public class ReadingListService implements IReadingListService {
 
 	@Override
 	public List<Book> selectList(Book book) {
-		System.out.println("利用二级缓存mapper进行查询");
 		List<Book> listBook = sqlSession.selectList("readingList.mapper.BookMapper.findBookInfomation", book);
 		return listBook;
 	}

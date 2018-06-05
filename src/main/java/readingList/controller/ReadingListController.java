@@ -34,16 +34,16 @@ public class ReadingListController {
 		List<Book> readingList = readingListService.findBookInfomation(book.getAuthor(), book.getTitle());
 		
 		
-		// 测试延迟加载
-		List<Book> listBook = readingListService.findBookInfomationLazy(book);
-		for(Book tempbook:listBook) {
-			if(tempbook.getPublish() != null) {
-				System.out.println("书名：" + tempbook.getTitle() + " 出版社名称：" + tempbook.getPublish().getPublish_name());	
-			}
-		}
+//		// 测试延迟加载
+//		List<Book> listBook = readingListService.findBookInfomationLazy(book);
+//		for(Book tempbook:listBook) {
+//			if(tempbook.getPublish() != null) {
+//				System.out.println("书名：" + tempbook.getTitle() + " 出版社名称：" + tempbook.getPublish().getPublish_name());	
+//			}
+//		}
 		
 		int count = readingListService.getCount();
-//		// 测试sqlsession 查询
+	    // 测试sqlsession 查询
 		List<Book> sessionList = readingListService.selectList(book);
 				
 		model.addAttribute("books", readingList);
