@@ -61,15 +61,35 @@ public class ReadingListController {
 		return "redirect:/readingList";
 	}
 	
-	@RequestMapping(value="/getData.json", produces="text/json;charset=UTF-8")
+	@RequestMapping(value="/getData.json", produces="application/json;charset=UTF-8")
 	@ResponseBody
 	public List<Book> jsonTest(Book book) {
 		List<Book> readingList = this.readingListService.findAll();
-		
-		JSONObject json = new JSONObject();
-		json.put("books", readingList);
 		return readingList;
 	}
 	
+	/**
+	 * url传值方式:getBookUrlTitle?title=
+	 * @param title
+	 * @return
+	 */
+	@RequestMapping(value="/getBookUrlTitle", produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public List<Book> findBookByTitle(String title) {
+		List<Book> readingList = readingListService.findBookInfomation("", title);
+		return readingList;
+	}
+	
+	/**
+	 * url传值方式:getBookUrlTitle?title= & author=
+	 * @param book
+	 * @return
+	 */
+	@RequestMapping(value="/getBookUrlObject", produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public List<Book> findBookByTitle(Book book) {
+		List<Book> readingList = readingListService.findBookInfomation(book.getAuthor(), book.getTitle());
+		return readingList;
+	}
 
 }
