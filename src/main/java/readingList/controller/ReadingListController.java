@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -61,7 +62,7 @@ public class ReadingListController {
 		return "redirect:/readingList";
 	}
 	
-	@RequestMapping(value="/getData.json", produces="application/json;charset=UTF-8")
+	@RequestMapping(value="/getData.json", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public List<Book> jsonTest(Book book) {
 		List<Book> readingList = this.readingListService.findAll();
@@ -73,7 +74,7 @@ public class ReadingListController {
 	 * @param title
 	 * @return
 	 */
-	@RequestMapping(value="/getBookUrlTitle", produces="application/json;charset=UTF-8")
+	@RequestMapping(value="/getBookUrlTitle", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public List<Book> findBookByTitle(String title) {
 		List<Book> readingList = readingListService.findBookInfomation("", title);
@@ -85,7 +86,7 @@ public class ReadingListController {
 	 * @param book
 	 * @return
 	 */
-	@RequestMapping(value="/getBookUrlObject", produces="application/json;charset=UTF-8")
+	@RequestMapping(value="/getBookUrlObject", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public List<Book> findBookByTitle(Book book) {
 		List<Book> readingList = readingListService.findBookInfomation(book.getAuthor(), book.getTitle());
