@@ -118,4 +118,11 @@ public class ReadingListService implements IReadingListService {
 		return this.bookMapper.findBookInfomationLazy(book.getAuthor(), book.getTitle());
 	}
 
+
+	@Override
+	public void insertBook(Book book) {
+		bookMapper.saveBook(book);
+		
+	}
+
 }

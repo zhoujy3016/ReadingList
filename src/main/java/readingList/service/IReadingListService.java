@@ -18,4 +18,6 @@ public interface IReadingListService {
 	List<Book> findBookInfomation(String author, String title);
 	
 	List<Book> selectList(Book book);
+	
+	void insertBook(Book book);
 }

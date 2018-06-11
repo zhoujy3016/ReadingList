@@ -81,4 +81,10 @@
 		</where>
     </select>
     
+    <insert id="saveBook" parameterType="readingList.domain.Book">
+    	insert into book(reader, isbn, title, author, description) 
+    		values(#{reader}, #{isbn}, #{title}, #{author}, #{description})
+    </insert>
+    
+    
 </mapper>

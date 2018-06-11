@@ -58,7 +58,8 @@ public class ReadingListController {
 		if(rs.hasErrors()){
 	           return "reading/readingList";
 	       }
-		this.readingListService.saveBook(book);
+		//this.readingListService.saveBook(book);
+		this.readingListService.insertBook(book);
 		return "redirect:/readingList";
 	}
 	
