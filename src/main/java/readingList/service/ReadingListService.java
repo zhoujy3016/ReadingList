@@ -120,9 +120,14 @@ public class ReadingListService implements IReadingListService {
 
 
 	@Override
-	public void insertBook(Book book) {
-		bookMapper.saveBook(book);
-		
+	public int insertBook(Book book) {
+		return bookMapper.saveBook(book);
+	}
+
+
+	@Override
+	public void deleteBook(Long id) {
+		this.bookMapper.deleteById(id);
 	}
 
 }

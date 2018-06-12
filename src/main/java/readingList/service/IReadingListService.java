@@ -19,5 +19,7 @@ public interface IReadingListService {
 	
 	List<Book> selectList(Book book);
 	
-	void insertBook(Book book);
+	int insertBook(Book book);
+	
+	void deleteBook(Long id);
 }

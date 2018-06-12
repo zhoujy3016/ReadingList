@@ -36,6 +36,7 @@
 			<span th:text="${book.author}"></span>
 			<span th:text="${book.description}"></span>
 			<span th:text="${book.publish_name}"></span>
+			<span><a th:href="@{'/readingList/deleteBook/' + ${book.id}}">删除</a></span>
 		</dt>
 	</dl>
 </div>

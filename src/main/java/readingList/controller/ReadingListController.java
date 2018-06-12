@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -62,6 +63,13 @@ public class ReadingListController {
 		this.readingListService.insertBook(book);
 		return "redirect:/readingList";
 	}
+	
+	@RequestMapping("/deleteBook/{bookId}")
+	public String deleteBook(@PathVariable("bookId") Long id) {
+		this.readingListService.deleteBook(id);
+		return "redirect:/readingList";
+	}
+	
 	
 	@RequestMapping(value="/getData.json", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody

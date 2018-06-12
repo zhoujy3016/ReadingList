@@ -19,5 +19,7 @@ public interface BookMapper {
 	
 	List<Book> findBookInfomationLazy(@Param("author")String author, @Param("title") String title);
 	
-	void saveBook(Book book);
+	int saveBook(Book book);
+	
+	void deleteById(Long id);
 }

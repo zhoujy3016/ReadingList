@@ -22,7 +22,7 @@ public class Book implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String id;
+	private Long id;
 	private String reader;
 	@NotEmpty(message="ISBN不能为空！")
 	private String isbn;
@@ -40,10 +40,10 @@ public class Book implements Serializable{
 	@JoinColumn(name="publish_id", insertable=false, updatable=false)
 	private Publish publish;
 	
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getReader() {
