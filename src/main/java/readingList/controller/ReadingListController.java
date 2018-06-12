@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -98,6 +99,13 @@ public class ReadingListController {
 	public List<Book> findBookByTitle(Book book) {
 		List<Book> readingList = readingListService.findBookInfomation(book.getAuthor(), book.getTitle());
 		return readingList;
+	}
+	
+	
+	@RequestMapping("/page")
+	public @ResponseBody Page<Book> page() {
+		Page<Book> pageBook = readingListService.findPage();
+		return pageBook;
 	}
 
 }

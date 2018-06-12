@@ -2,6 +2,8 @@ package readingList.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import readingList.domain.Book;
 
 
@@ -22,4 +24,6 @@ public interface IReadingListService {
 	int insertBook(Book book);
 	
 	void deleteBook(Long id);
+	
+	Page<Book> findPage();
 }

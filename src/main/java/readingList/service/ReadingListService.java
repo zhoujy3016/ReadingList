@@ -15,6 +15,8 @@ import javax.sql.DataSource;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
@@ -127,6 +129,13 @@ public class ReadingListService implements IReadingListService {
 	@Override
 	public void deleteBook(Long id) {
 		this.bookMapper.deleteById(id);
+	}
+
+
+	@Override
+	public Page<Book> findPage() {
+		Page<Book> pageBook = this.readingListRepository.findAll(new PageRequest(1, 4));
+		return pageBook;
 	}
 
 }
