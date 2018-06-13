@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://ww.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- <link rel="stylesheet" th:href="@{/style.css}"></link> -->
-<script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+<!-- <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <script src="/libs/vue.min.js"></script>
 <script src="/libs/jquery.min.js"></script>
-<link rel="stylesheet" href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" />  
+<link rel="stylesheet" href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" />   -->
 </head>
 <script>
 	function htmlOnLoad() {
@@ -19,6 +20,13 @@
 <body onload="htmlOnLoad()">
 
 <h2>Your Reading List</h2>
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+	admin权限
+</div>
+<div sec:authorize="hasRole('ROLE_USER')">
+	普通用户权限
+</div>
+<br/>
 <form method="get">
 	<label for="author">Author:</label>
 	<input type="text" name="author" id="author" size="50">

@@ -34,4 +34,5 @@ logging:
   level:
     root: info
     readingList: debug
+    org.springframework.security: INFO
  

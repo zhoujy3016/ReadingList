@@ -26,8 +26,8 @@ import org.springframework.util.StringUtils;
 
 import readingList.domain.Book;
 import readingList.domain.Publish;
-import readingList.domain.ReadingListRepository;
 import readingList.mapper.BookMapper;
+import readingList.repository.ReadingListRepository;
 
 
 @Service

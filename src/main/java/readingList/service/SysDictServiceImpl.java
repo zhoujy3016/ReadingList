@@ -22,8 +22,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import readingList.domain.SysDictEntity;
-import readingList.domain.SysDictRepository;
 import readingList.mapper.SysDictMapper;
+import readingList.repository.SysDictRepository;
 
 import java.util.List;
 

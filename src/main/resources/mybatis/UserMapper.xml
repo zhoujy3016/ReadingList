@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="readingList.mapper.UserMapper">
+
+<select id="findByUserName" resultType="readingList.domain.SysUserEntity">
+        SELECT user.id id,
+        	   user.username username,
+        	   user.password password,
+        	   role.name roleName
+         FROM sys_user user LEFT JOIN  sys_user_role ur ON user.id = ur.user_id LEFT JOIN sys_role role ON ur.role_id = role.id
+         where user.username = #{username}
+    </select>
+</mapper>
