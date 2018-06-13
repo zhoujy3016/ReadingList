@@ -18,7 +18,7 @@ spring:
   #格式化输出json
   jackson:
     serialization:
-      indent-output: true      
+      indent-output: true
 server:
   port: 8081
 mybatis:
