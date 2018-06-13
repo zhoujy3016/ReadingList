@@ -1,6 +1,6 @@
 /*
 SQLyog Community v13.0.1 (64 bit)
-MySQL - 5.7.22-log : Database - dbbook
+MySQL - 5.7.20-log : Database - dbbook
 *********************************************************************
 */
 
@@ -12,7 +12,7 @@ MySQL - 5.7.22-log : Database - dbbook
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`dbbook` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`dbbook` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 USE `dbbook`;
 
@@ -29,7 +29,7 @@ CREATE TABLE `book` (
   `description` varchar(500) DEFAULT NULL,
   `publish_id` int(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `book` */
 
@@ -99,6 +99,54 @@ insert  into `sys_dict`(`id`,`name`,`type`,`code`,`value`,`order_num`,`remark`,`
 (13,'出版社','pub','1','电子工业出版社',1,NULL,0),
 (14,'出版社','pub','2','朝鲜劳动党出版社',2,NULL,0),
 (15,'出版社','pub','3','工人出版社',3,NULL,0);
+
+/*Table structure for table `sys_role` */
+
+DROP TABLE IF EXISTS `sys_role`;
+
+CREATE TABLE `sys_role` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+/*Data for the table `sys_role` */
+
+insert  into `sys_role`(`id`,`name`) values 
+(1,'ROLE_ADMIN'),
+(2,'ROLE_USER');
+
+/*Table structure for table `sys_user` */
+
+DROP TABLE IF EXISTS `sys_user`;
+
+CREATE TABLE `sys_user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+/*Data for the table `sys_user` */
+
+insert  into `sys_user`(`id`,`username`,`password`) values 
+(1,'zhoujy','123456'),
+(2,'admin','admin');
+
+/*Table structure for table `sys_user_role` */
+
+DROP TABLE IF EXISTS `sys_user_role`;
+
+CREATE TABLE `sys_user_role` (
+  `user_id` bigint(20) DEFAULT NULL,
+  `role_id` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `sys_user_role` */
+
+insert  into `sys_user_role`(`user_id`,`role_id`) values 
+(2,1),
+(1,2);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
