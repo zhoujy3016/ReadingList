@@ -4,8 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script th:src="@{libs/vue.min.js}"></script>
-<script th:src="@{libs/jquery.min.js}"></script>
+<!-- <script th:src="@{libs/vue.min.js}"></script>
+<script th:src="@{libs/jquery.min.js}"></script> -->
 </head>
 <script>
 	function htmlOnLoad() {
@@ -16,7 +16,7 @@
 
 <h2>Your Reading List</h2>
 <div sec:authorize="hasRole('ROLE_ADMIN')">
-	admin权限
+	管理员权限
 </div>
 <div sec:authorize="hasRole('ROLE_USER')">
 	普通用户权限
@@ -65,6 +65,6 @@
 	<input type="submit"></input>
 </form>
 
-<script th:src="@{js/readingList.js}"></script>
+<!-- <script th:src="@{js/readingList.js}"></script> -->
 </body>
 </html>
