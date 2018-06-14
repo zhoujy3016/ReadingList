@@ -85,7 +85,7 @@ public class ReadingListService implements IReadingListService {
 
 	@Override
 	@DataFilter(tableAlias="b")
-	public List<Book> findBookInfomation(Map<String, String> params) {
+	public List<Book> findBookInfomation(Map<String, Object> params) {
 		BookMapper mapper = sqlSession.getMapper(BookMapper.class);
 		if(bookMapper == mapper) {
 			System.out.println("sqlSession取得mapper与自动注入mapper为同一对象");

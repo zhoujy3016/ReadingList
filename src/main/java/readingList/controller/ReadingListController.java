@@ -35,7 +35,7 @@ public class ReadingListController {
 	@GetMapping
 	public String readerBooks(Book book, Model model) {
 		
-		Map<String, String> params = new HashMap<>();
+		Map<String, Object> params = new HashMap<>();
 		params.put("title", book.getTitle());
 		params.put("author", book.getAuthor());
 		List<Book> readingList = readingListService.findBookInfomation(params);

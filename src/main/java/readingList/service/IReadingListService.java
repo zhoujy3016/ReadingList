@@ -18,7 +18,7 @@ public interface IReadingListService {
 	
 	List<Book> findBookInfomationLazy(Book book);
 	
-	List<Book> findBookInfomation(Map<String, String> params);
+	List<Book> findBookInfomation(Map<String, Object> params);
 	
 	List<Book> selectList(Book book);
 	

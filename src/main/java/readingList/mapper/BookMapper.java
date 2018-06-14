@@ -14,7 +14,7 @@ public interface BookMapper {
 	 * 
 	 * @return
 	 */
-	List<Book> findBookInfomation(@Param("params") Map<String, String> params);
+	List<Book> findBookInfomation(@Param("params") Map<String, Object> params);
 	
 	
 	List<Book> selectList(Book book);
