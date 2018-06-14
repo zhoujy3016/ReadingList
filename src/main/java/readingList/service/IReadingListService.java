@@ -1,6 +1,7 @@
 package readingList.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.domain.Page;
 
@@ -17,7 +18,7 @@ public interface IReadingListService {
 	
 	List<Book> findBookInfomationLazy(Book book);
 	
-	List<Book> findBookInfomation(String author, String title);
+	List<Book> findBookInfomation(Map<String, String> params);
 	
 	List<Book> selectList(Book book);
 	

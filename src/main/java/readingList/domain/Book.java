@@ -40,6 +40,8 @@ public class Book implements Serializable{
 	@JoinColumn(name="publish_id", insertable=false, updatable=false)
 	private Publish publish;
 	
+	public String creater;
+	
 	public Long getId() {
 		return id;
 	}
@@ -94,6 +96,12 @@ public class Book implements Serializable{
 	}
 	public Publish getPublish() {
 		return publish;
+	}
+	public String getCreater() {
+		return creater;
+	}
+	public void setCreater(String creater) {
+		this.creater = creater;
 	}
 	
 	

@@ -1,6 +1,8 @@
 package readingList.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,7 +34,11 @@ public class ReadingListController {
 	
 	@GetMapping
 	public String readerBooks(Book book, Model model) {
-		List<Book> readingList = readingListService.findBookInfomation(book.getAuthor(), book.getTitle());
+		
+		Map<String, String> params = new HashMap<>();
+		params.put("title", book.getTitle());
+		params.put("author", book.getAuthor());
+		List<Book> readingList = readingListService.findBookInfomation(params);
 		
 		
 //		// 测试延迟加载
@@ -44,8 +50,8 @@ public class ReadingListController {
 //		}
 		
 		int count = readingListService.getCount();
-	    // 测试sqlsession 查询
-		List<Book> sessionList = readingListService.selectList(book);
+//	    // 测试sqlsession 查询
+//		List<Book> sessionList = readingListService.selectList(book);
 				
 		model.addAttribute("books", readingList);
 		model.addAttribute("count", count);
@@ -82,24 +88,24 @@ public class ReadingListController {
 	 * @param title
 	 * @return
 	 */
-	@RequestMapping(value="/getBookUrlTitle", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	@ResponseBody
-	public List<Book> findBookByTitle(String title) {
-		List<Book> readingList = readingListService.findBookInfomation("", title);
-		return readingList;
-	}
+//	@RequestMapping(value="/getBookUrlTitle", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+//	@ResponseBody
+//	public List<Book> findBookByTitle(String title) {
+//		List<Book> readingList = readingListService.findBookInfomation("", title, "");
+//		return readingList;
+//	}
 	
 	/**
 	 * url传值方式:getBookUrlTitle?title= & author=
 	 * @param book
 	 * @return
 	 */
-	@RequestMapping(value="/getBookUrlObject", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	@ResponseBody
-	public List<Book> findBookByTitle(Book book) {
-		List<Book> readingList = readingListService.findBookInfomation(book.getAuthor(), book.getTitle());
-		return readingList;
-	}
+//	@RequestMapping(value="/getBookUrlObject", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+//	@ResponseBody
+//	public List<Book> findBookByTitle(Book book) {
+//		List<Book> readingList = readingListService.findBookInfomation(book.getAuthor(), book.getTitle(), "");
+//		return readingList;
+//	}
 	
 	
 	@RequestMapping("/page")

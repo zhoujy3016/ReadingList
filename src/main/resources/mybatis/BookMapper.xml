@@ -14,6 +14,7 @@
         <result column="author" property="author" />
         <result column="publish_id" property="publish_id" />
         <result column="publish_name" property="publish_name"/>
+        <result column="creater" property="creater"/>
     </resultMap>
     
    
@@ -48,18 +49,21 @@
 	</select>
  -->
 
-     <select id="findBookInfomation" resultMap="bookMap">
+     <select id="findBookInfomation" resultMap="bookMap" parameterType="Map">
         select b.*, p.publish_id ,p.publish_name from book b
         left join publish p on p.publish_id = b.publish_id
         <where>
-	         <if test="author!= null and author!= ''">
+	         <if test="params.author != null and params.author !=''">
 	         	<!-- 使用bind防止sql注入 -->
-	         	<bind name="authorLike" value="'%'+ author +'%'"/>
+	         	<bind name="authorLike" value="'%'+ params.author +'%'"/>
 				and b.author like #{authorLike}
 			</if>
-			<if test="title != null and title != ''">
-				<bind name="titleLike" value="'%'+ title +'%'"/>
+			<if test="params.title != null and params.title != ''">
+				<bind name="titleLike" value="'%'+ params.title +'%'"/>
 				and b.title like #{titleLike}
+			</if>
+			<if test="params.conditions != null and params.conditions !=''">
+				and ${params.conditions}
 			</if>
 		</where>
     </select>

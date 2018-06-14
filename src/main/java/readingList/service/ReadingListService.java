@@ -2,6 +2,7 @@ package readingList.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -24,6 +25,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import readingList.common.annotation.DataFilter;
 import readingList.domain.Book;
 import readingList.domain.Publish;
 import readingList.mapper.BookMapper;
@@ -82,14 +84,15 @@ public class ReadingListService implements IReadingListService {
 
 
 	@Override
-	public List<Book> findBookInfomation(String author, String title) {
+	@DataFilter(tableAlias="b")
+	public List<Book> findBookInfomation(Map<String, String> params) {
 		BookMapper mapper = sqlSession.getMapper(BookMapper.class);
 		if(bookMapper == mapper) {
 			System.out.println("sqlSession取得mapper与自动注入mapper为同一对象");
 		} else {
 			System.out.println("sqlSession取得mapper与自动注入mapper为不同对象");
 		}
-		return mapper.findBookInfomation(author, title);
+		return mapper.findBookInfomation(params);
 	}
 
 

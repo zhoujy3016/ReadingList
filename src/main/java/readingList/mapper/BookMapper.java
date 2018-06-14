@@ -1,6 +1,8 @@
 package readingList.mapper;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 import readingList.domain.Book;
@@ -12,7 +14,7 @@ public interface BookMapper {
 	 * 
 	 * @return
 	 */
-	List<Book> findBookInfomation(@Param("author")String author, @Param("title") String title);
+	List<Book> findBookInfomation(@Param("params") Map<String, String> params);
 	
 	
 	List<Book> selectList(Book book);
