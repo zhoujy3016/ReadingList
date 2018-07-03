@@ -8,8 +8,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import com.wisely.spring_boot_starter_dictionary.DictCacheService;
-
+import readingList.common.bean.DictCacheService;
 import readingList.domain.SysDictEntity;
 import readingList.service.ISysDictService;
 

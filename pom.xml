@@ -104,11 +104,11 @@
 			<version>${mybatis.redis.version}</version>
 		</dependency>
 		
-		<dependency>
+<!--		<dependency>
 		  <groupId>com.wisely</groupId>
 		  <artifactId>spring-boot-starter-dictionary</artifactId>
 		  <version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

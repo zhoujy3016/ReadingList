@@ -17,28 +17,28 @@ import readingList.domain.SysUserEntity;
 @Aspect
 @Component
 public class DataFilterAspect {
-	
+
 	@Pointcut("@annotation(readingList.common.annotation.DataFilter)")
 	public void dataFilterCut() {
-		
+
 	}
-	
+
 	@Before("dataFilterCut()")
 	public void dataFilter(JoinPoint point) {
 		MethodSignature signature = (MethodSignature) point.getSignature();
 		DataFilter dataFilter = signature.getMethod().getAnnotation(DataFilter.class);
 		Map params =  (Map) point.getArgs()[0];
 		SysUserEntity principal = (SysUserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		
+
 		String tableAlias = dataFilter.tableAlias();
 		if(StringUtils.isNotBlank(tableAlias)) {
 			tableAlias += ".";
 		}
 		String conditions = null;
 		if("ROLE_USER".equals(principal.getRoleName())) {
-			conditions = tableAlias + "creater= '" + principal.getUsername() + "' "; 
+			conditions = tableAlias + "creater= '" + principal.getUsername() + "' ";
 		}
 		params.put("conditions", conditions);
 	}
-		
+
 }

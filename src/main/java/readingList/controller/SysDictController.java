@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wisely.spring_boot_starter_dictionary.DictCacheService;
-
+import readingList.common.bean.DictCacheService;
 
 
 @RestController

@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Import;
 
 @SpringBootApplication()
 @EnableCaching
-@MapperScan({"readingList.mapper"})
-@Import({com.wisely.spring_boot_starter_dictionary.App.class})
+@MapperScan(basePackages = {"readingList.mapper"})
+//@Import({com.wisely.spring_boot_starter_dictionary.App.class})
 public class ReadingListApplication {
 
 	public static void main(String[] args) {

@@ -19,18 +19,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Table(name="sys_user")
 public class SysUserEntity implements UserDetails{
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String username;
-	
+
 	private String password;
-	
+
 	@Transient
 	private String roleName;
 
@@ -96,7 +96,7 @@ public class SysUserEntity implements UserDetails{
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
-	
-	
+
+
+
 }

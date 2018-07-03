@@ -5,7 +5,7 @@ $(function () {
         contentType: "application/json",
         success: function(r){
         	var options = '';
-        	for(i = 0; i < r.pub.length; i++) {
+        	for(var i = 0; i < r.pub.length; i++) {
         		options += '<option>'+ r.pub[i].value +'</option>'
         	}
         	$("#sel").append(options);

@@ -12,7 +12,7 @@ public class CustomUserService implements UserDetailsService {
 
 	@Autowired
 	private UserMapper userMapper;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		SysUserEntity sysUserEndtity = this.userMapper.findByUserName(username);
@@ -21,5 +21,5 @@ public class CustomUserService implements UserDetailsService {
 		}
 		return sysUserEndtity;
 	}
-	
+
 }
