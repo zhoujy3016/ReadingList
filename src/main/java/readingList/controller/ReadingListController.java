@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import readingList.common.component.DictComponent;
 import readingList.domain.Book;
 import readingList.service.ReadingListService;
 
@@ -55,6 +56,7 @@ public class ReadingListController {
 				
 		model.addAttribute("books", readingList);
 		model.addAttribute("count", count);
+		model.addAttribute("publishs", DictComponent.getDictCache("pub"));
 		log.info("测试一条log");
 		return "reading/readingList";
 	}
