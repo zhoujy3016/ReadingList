@@ -1,8 +1,6 @@
 package readingList.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,6 +20,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import readingList.common.component.DictComponent;
 import readingList.domain.Book;
 import readingList.service.ReadingListService;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
 
 
 @Controller
@@ -62,7 +64,20 @@ public class ReadingListController {
 	}
 	
 	@PostMapping(value="/add")
-	public String addReaderInformation(@Validated Book book, BindingResult rs) {
+	public String addReaderInformation(@Validated Book book, BindingResult rs, Model model) {
+		model.addAttribute("publishs", DictComponent.getDictCache("pub"));
+
+		// Validator 验证方式
+		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+		Set<ConstraintViolation<Object>> constraintViolations = validator.validate(book);
+		if (!constraintViolations.isEmpty()) {
+			Iterator iterator = constraintViolations.iterator();
+			while(iterator.hasNext()) {
+				ConstraintViolation<Object> constraint = (ConstraintViolation<Object>)iterator.next();
+				System.out.println(constraint.getMessage());
+			}
+		}
+
 		if(rs.hasErrors()){
 	           return "reading/readingList";
 	       }

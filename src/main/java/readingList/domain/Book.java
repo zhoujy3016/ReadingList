@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="book")
@@ -30,7 +31,8 @@ public class Book implements Serializable{
 	private String title;
 	private String author;
 	private String description;
-	
+
+	@NotNull(message = "请选择出版商！")
 	private Integer publish_id;
 	
 	@Transient

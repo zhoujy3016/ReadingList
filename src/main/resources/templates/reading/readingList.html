@@ -66,7 +66,7 @@
 
 
 
-	</select><br/>
+	</select><span th:if="${#fields.hasErrors('publish_id')}" th:errors="*{publish_id}"></span><br/>
 	<label for="author">Author:</label>
 	<input type="text" th:field="*{author}" size="50"></input><br/>
 	<label for="isbn">ISBN</label>
