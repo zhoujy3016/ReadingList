@@ -36,7 +36,7 @@ public class DataFilterAspect {
 		}
 		String conditions = null;
 		if("ROLE_USER".equals(principal.getRoleName())) {
-			conditions = tableAlias + "creater= '" + principal.getUsername() + "' ";
+			conditions = tableAlias + "creater= " + principal.getId();
 		}
 		params.put("conditions", conditions);
 	}
