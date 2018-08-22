@@ -45,6 +45,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll()
 				.successHandler(loginSuccessHandler())
 			.and()
+				.rememberMe()
+				.tokenValiditySeconds(1209600)
+				.key("motherfucker")
+				.and()
 			.logout()
 				.permitAll();
 //				.and().csrf().disable();
