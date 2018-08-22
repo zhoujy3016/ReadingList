@@ -62,7 +62,7 @@
     <label for="publisher">Publisher:</label>
     <select id="publish_id" name="publish_id" >
 		<option value="">请选择</option>
-		<option th:each="publish:${publishs.pub}" th:value="${publish.code}" th:text="${publish.value}"></option>
+		<option th:each="publish:${publishs.pub}" th:value="${publish.publish_id}" th:text="${publish.publish_name}"></option>
 
 
 

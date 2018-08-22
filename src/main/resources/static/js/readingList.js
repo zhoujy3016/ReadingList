@@ -13,7 +13,7 @@ $(function () {
      //    }
     // });
 
-    $.get("/getDictCache/pub", function(r){
+    $.get("/getDictCache/sex", function(r){
     	console.log(r);
        	// var options = '';
        	// for(var i = 0; i < r.pub.length; i++) {

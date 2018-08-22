@@ -86,8 +86,8 @@
     </select>
     
     <insert id="saveBook" parameterType="readingList.domain.Book">
-    	insert into book(reader, isbn, title, author, description) 
-    		values(#{reader}, #{isbn}, #{title}, #{author}, #{description})
+    	insert into book(reader, isbn, title, author, description, publish_id, creater)
+    		values(#{reader}, #{isbn}, #{title}, #{author}, #{description}, #{publish_id}, #{creater})
     </insert>
     
     <delete id="deleteById" parameterType="java.lang.Long">

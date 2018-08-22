@@ -58,14 +58,14 @@ public class ReadingListController {
 				
 		model.addAttribute("books", readingList);
 		model.addAttribute("count", count);
-		model.addAttribute("publishs", DictComponent.getDictCache("pub"));
+		model.addAttribute("publishs", DictComponent.getExtraDictCache("pub"));
 		log.info("测试一条log");
 		return "reading/readingList";
 	}
 	
 	@PostMapping(value="/add")
 	public String addReaderInformation(@Validated Book book, BindingResult rs, Model model) {
-		model.addAttribute("publishs", DictComponent.getDictCache("pub"));
+		model.addAttribute("publishs", DictComponent.getExtraDictCache("pub"));
 
 		// Validator 验证方式
 		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();

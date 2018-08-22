@@ -9,8 +9,11 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import readingList.common.bean.DictCacheService;
+import readingList.domain.Publish;
 import readingList.domain.SysDictEntity;
+import readingList.service.IPublishService;
 import readingList.service.ISysDictService;
+import readingList.service.PublishService;
 
 
 @Component
@@ -21,6 +24,9 @@ public class AppRunner implements ApplicationRunner{
     
     @Autowired
     private DictCacheService dictCacheService;
+
+    @Autowired
+    private IPublishService publishService;
     
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -42,6 +48,9 @@ public class AppRunner implements ApplicationRunner{
 			// 根据类型查询每种数据字典，添加到map中
 			sysDictService.getSysDictEntity(type);
 		}
+
+		// publish表cache
+		List<Publish> publishList = publishService.findPublishList("pub");
 	}
 	
 	

@@ -39,6 +39,14 @@ public class DictComponent {
         return map;
     }
 
+    public static Map<String, Object> getExtraDictCache(String type) {
+        Map<String, Object> map = new HashMap<>();
+        Cache cache = dictComponent.cacheManager.getCache("extra_dictionary");
+        Cache.ValueWrapper vw = cache.get(type);
+        map.put(type, vw.get());
+        return map;
+    }
+
     public static Map<String, Object>getDictMap(String types) {
         Map<String, Object> dictMap = dictComponent.dictCacheService.getCacheMap();
         Map<String, Object> map = new HashMap<>();

@@ -25,6 +25,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import readingList.common.SpringSecurityUtils;
 import readingList.common.annotation.DataFilter;
 import readingList.domain.Book;
 import readingList.domain.Publish;
@@ -125,6 +126,7 @@ public class ReadingListService implements IReadingListService {
 
 	@Override
 	public int insertBook(Book book) {
+		book.setCreater(SpringSecurityUtils.getUser().getId());
 		return bookMapper.saveBook(book);
 	}
 

@@ -1,6 +1,10 @@
 package readingList.mapper;
 
 
-public interface PublishMapper {
+import readingList.domain.Publish;
 
+import java.util.List;
+
+public interface PublishMapper {
+    List<Publish> findPublishList();
 }
