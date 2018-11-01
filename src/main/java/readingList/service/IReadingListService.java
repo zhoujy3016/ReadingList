@@ -3,13 +3,14 @@ package readingList.service;
 import java.util.List;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.data.domain.Page;
 
 import readingList.domain.Book;
 
 
 
-public interface IReadingListService {
+public interface IReadingListService extends IService<Book> {
 	List<Book> findAndSearch(Book book);
 	
 	List<Book> findAll();

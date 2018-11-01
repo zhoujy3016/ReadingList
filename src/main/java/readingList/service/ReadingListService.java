@@ -13,6 +13,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.sql.DataSource;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -34,7 +35,7 @@ import readingList.repository.ReadingListRepository;
 
 
 @Service
-public class ReadingListService implements IReadingListService {
+public class ReadingListService extends ServiceImpl<BookMapper, Book> implements IReadingListService {
 	@Autowired 
 	private ReadingListRepository readingListRepository;
 	
@@ -87,13 +88,14 @@ public class ReadingListService implements IReadingListService {
 	@Override
 	@DataFilter(tableAlias="b")
 	public List<Book> findBookInfomation(Map<String, Object> params) {
-		BookMapper mapper = sqlSession.getMapper(BookMapper.class);
-		if(bookMapper == mapper) {
-			System.out.println("sqlSession取得mapper与自动注入mapper为同一对象");
-		} else {
-			System.out.println("sqlSession取得mapper与自动注入mapper为不同对象");
-		}
-		return mapper.findBookInfomation(params);
+//		BookMapper mapper = sqlSession.getMapper(BookMapper.class);
+//		if(bookMapper == mapper) {
+//			System.out.println("sqlSession取得mapper与自动注入mapper为同一对象");
+//		} else {
+//			System.out.println("sqlSession取得mapper与自动注入mapper为不同对象");
+//		}
+//		return mapper.findBookInfomation(params);
+		return this.baseMapper.findBookInfomation(params);
 	}
 
 

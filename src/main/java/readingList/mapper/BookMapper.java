@@ -3,12 +3,13 @@ package readingList.mapper;
 import java.util.List;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
 import readingList.domain.Book;
 
 
-public interface BookMapper {
+public interface BookMapper extends BaseMapper<Book> {
 
 	/**
 	 * 
