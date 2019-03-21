@@ -3,7 +3,7 @@ spring:
   cache:
     type: simple
   datasource:
-    url: jdbc:mysql://67.209.187.223:3306/dbbook?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://home.zrouter.top:3306/dbbook?useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: admin
     password: admin
     driverClassName: com.mysql.jdbc.Driver
